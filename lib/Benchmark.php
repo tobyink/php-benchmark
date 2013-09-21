@@ -10,12 +10,12 @@ class Benchmark {
 	public function __construct ($name) {
 		$this->name = $name;
 	}
-
+	
 	public function start () {
 		if ($this->_start) die("already started");
 		$this->_start = microtime(true);
 	}
-
+	
 	public function finish () {
 		if ($this->_finish) die("already finished");
 		$this->_finish = microtime(true);
@@ -28,7 +28,7 @@ class Benchmark {
 	public function run ($callable, $count=1) {
 		$this->start();
 		for ($i = 0; $i < $count; $i++)
-			call_user_func($callable);
+			$callable();
 		$this->finish();
 	}
 	
